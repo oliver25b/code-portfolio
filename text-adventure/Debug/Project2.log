@@ -1,0 +1,4 @@
+﻿  project2.cpp
+C:\Users\olive\Documents\CPP programs\Project2\project2.cpp(117,40): warning C4305: '=': truncation from 'int' to 'char'
+C:\Users\olive\Documents\CPP programs\Project2\project2.cpp(117,36): warning C4309: '=': truncation of constant value
+  Project2.vcxproj -> C:\Users\olive\Documents\CPP programs\Project2\Debug\Project2.exe

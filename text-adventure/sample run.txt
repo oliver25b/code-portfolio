@@ -1,0 +1,49 @@
+ _____________________________
+|OFF+ +ON                     |
+|  .-----------------------.  |
+|  |  .-----------------.  |  |
+|  |  |                 |  |  |
+|  |  |     MINIMUD     |  |  |
+|  |  |    ADVENTURE    |  |  |
+|  |  |                 |  |  |
+|  |  |  -OLIVER BARTZ  |  |  |
+|  |  '-----------------'  |  |
+|  |__GAME BOY_____________|  |
+|           ________          |
+|     ,    (Nintendo)         |
+|   _| |_   """"""""     .-.  |
+| -[_   _]-         .-. (   ) |
+|    |_|           (   ) '-'  |
+|     '             '-'   A   |
+|                    B        |
+|             ___   ___       |
+|            (___) (___)  ,., |
+|           Select Start ;:;: |
+|                       ,;:;' /
+|                      ,:;:'.'
+'--------------------------`
+Enter name of the game to play: dog
+You awaken covered in sweat. You don't recognize where you are...
+Inside the home
+You notice the following: dog.
+You can go: west.==> look
+You are inside a small home with a couch, chair and TV. It smells like dog in here.
+You notice the following: He is a white dog with short pointed ears, a long coat, and a tail curled over his back. He is circling and whining, as if missing his favorite toy. Maybe you can find it for him?.
+You can go: west.==> w
+In a yard
+You notice the following: ball.
+You can go: east.==> look
+You are in the yard in front of a modest home. The front door of the home is open to the east.
+You notice the following: It is a small rubber ball. It looks like it has been chewed up!.
+You can go: east.==> take ball
+You take the ball==> west
+You can't go west.
+==> east
+Inside the home
+You notice the following: dog.
+You can go: west.==> look
+You are inside a small home with a couch, chair and TV. It smells like dog in here.
+You notice the following: He is a white dog with short pointed ears, a long coat, and a tail curled over his back. He is circling and whining, as if missing his favorite toy. Maybe you can find it for him?.
+You can go: west.==> drop ball
+You drop the ball. The dog grabs the ball and wags his tail happily. You win!
+Press any key to continue . . .
