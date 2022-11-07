@@ -1,0 +1,281 @@
+-- ALU tester using randomized inputs
+-- Oliver Bartz
+-- Partners: Tyler Miller, Christian Meintel
+-- Project04 Part 2
+-- October 19, 2022
+
+library IEEE;
+    use IEEE.std_logic_1164.all;
+    use IEEE.numeric_std.all;
+
+entity TB is
+end TB;
+
+-------------------------
+architecture ALU of TB is
+-------------------------
+    component ALU is
+        generic (   BITS   : natural := 8 );                          -- ALU bit width
+        port    (   RESET  : in  std_logic;                           -- Active high master reset
+                    CLOCK  : in  std_logic;                           -- Master clock
+                    ENABLE : in  std_logic;                           -- Clock enable
+                    OPCODE : in  std_logic_vector (3      downto 0);  -- ALU operation
+                    DIN    : in  std_logic_vector (BITS-1 downto 0);  -- Data input
+                    ACCUM  : out std_logic_vector (BITS-1 downto 0);  -- Accumulator output
+                    FLAGS  : out std_logic_vector (3      downto 0)); -- Status flags output (NVCZ)
+    end component ALU;
+
+    --constants and signals
+    constant    BITS    : natural := 8;
+    signal      RESET   : std_logic;
+    signal      CLOCK   : std_logic;
+    signal      ENABLE  : std_logic;
+    signal      OPCODE  : std_logic_vector (3       downto 0);
+    signal      DIN     : std_logic_vector (BITS-1  downto 0);
+    signal      ACCUM   : std_logic_vector (BITS-1  downto 0);
+    signal      FLAGS   : std_logic_vector (3       downto 0);
+
+    constant    TCLK    : time      := 1 uS;
+    signal      DONE    : boolean   := FALSE;
+
+    --functions and processes
+begin
+    -----------------
+    --Unit Under Test
+    -----------------
+        UUT : ALU
+            generic map(BITS   => BITS)
+            port map   (RESET  => RESET,
+                        CLOCK  => CLOCK,
+                        ENABLE => ENABLE,
+                        OPCODE => OPCODE,
+                        DIN    => DIN,
+                        ACCUM  => ACCUM,
+                        FLAGS  => FLAGS);
+
+    ----------------------
+    --Clock / Reset Driver
+    ----------------------
+        process begin
+            RESET <= '1', '0' after TCLK;
+            CLOCK <= '0';
+            wait for 2*TCLK;
+            while not DONE loop
+                CLOCK <= '1', '0' after TCLK/2;
+                wait for TCLK;
+            end loop;
+            report "Simulation complete." severity note;
+            wait;
+        end process;
+
+    ------------------------
+    --OPCODE + DIN Generator
+    ------------------------
+        process
+            variable LFSR : std_logic_vector (1 to 23) := "011" & x"C0DED";
+
+            impure function RANDOM (SIZE : natural) return std_logic_vector is
+                    variable RTN : std_logic_vector (1 to SIZE);
+                begin
+                    for I in 1 to SIZE loop
+                        LFSR := (LFSR (18) xor LFSR (23)) & LFSR (1 to 22); -- CCITT O.151 test pattern
+                        RTN (I) := LFSR (1);
+                    end loop;
+                return RTN;
+            end RANDOM;
+
+        begin
+            
+            for I in 1 to 2048 loop
+                OPCODE <= RANDOM (OPCODE'length);
+                DIN <= RANDOM (DIN'length);
+                loop
+                    wait until CLOCK = '1';
+                    exit when ENABLE = '1';
+                end loop;
+            end loop;
+            DONE <= TRUE;
+            wait;
+        end process;
+
+    ------------------
+    --Enable Generator
+    ------------------
+        process
+        variable LFSR : std_logic_vector (1 to 23) := "011" & x"C0DED";
+
+        impure function OneBitRand (THROWAWAY : natural) return std_logic is
+                variable RTN : std_logic;
+            begin
+                LFSR := (LFSR (18) xor LFSR (23)) & LFSR (1 to 22); -- CCITT O.151 test pattern
+                RTN  := LFSR (1);                                   -- grab out single bit from random vector
+            return RTN;
+        end OneBitRand;
+
+        begin
+            while (not DONE) loop
+                ENABLE <= OneBitRand (0);
+                wait until CLOCK = '1';
+            end loop;
+            wait;
+        end process;
+
+    ------------------
+    --Behavioral Model
+    ------------------
+        process
+            variable RESULT     : unsigned (BITS   downto 0);
+            variable MAX        : unsigned (BITS   downto 0);
+            variable A, B       : unsigned (BITS-1 downto 0) := (others => '0');
+            variable N, V, C, Z : std_logic := '0';
+            variable CHECK      : std_logic := '0';
+        begin
+            wait until CLOCK = '1';
+            if (CHECK = '1') then
+                assert (A = unsigned (ACCUM))   report "Incorrect accumulator value"    severity error;
+                assert (N = FLAGS (3))          report "Incorrect N flag state"         severity error;
+                assert (V = FLAGS (2))          report "Incorrect V flag state"         severity error;
+                assert (C = FLAGS (1))          report "Incorrect C flag state"         severity error;
+                assert (Z = FLAGS (0))          report "Incorrect Z flag state"         severity error;
+            end if;
+
+            for I in 0 to BITS loop
+                MAX (I) := '1';
+            end loop;
+
+            CHECK := ENABLE; -- Save ENABLE for the next clock cycle to enable assertions
+            if (ENABLE = '1') then
+                case OPCODE is
+                    when "0000" =>  if (C = '0') -- ADD
+                                        then RESULT := resize (A, BITS+1) + resize (B, BITS+1);
+                                        else RESULT := resize (A, BITS+1) + resize (B, BITS+1) + 1;
+                                    end if;
+                                    if (A (BITS-1) /= B (BITS-1))
+                                        then V := '0';
+                                    elsif (B (BITS-1) = '0')
+                                        then V := RESULT (BITS-1);
+                                        else V := not RESULT (BITS-1);
+                                    end if;
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    C := RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "0001" =>  if (C = '0') -- SUB
+                                        then RESULT := resize (A, BITS+1) - resize (B, BITS+1) - 1;
+                                        else RESULT := resize (A, BITS+1) - resize (B, BITS+1);
+                                    end if;
+                                    if (A (BITS-1) = B (BITS-1))
+                                        then V := '0';
+                                    elsif (B (BITS-1) = '1')
+                                        then V := RESULT (BITS-1);
+                                        else V := not RESULT (BITS-1);
+                                    end if;
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    C := not RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "0010" =>  RESULT := resize (A, BITS+1) + 1; -- INC
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    C := RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "0011" =>  RESULT := resize (A, BITS+1) - 1; --DEC
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    C := RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "0100" =>  RESULT := resize(A, BITS+1) - resize(B, BITS+1); --CMP
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    C := not RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                    when "0101" =>  RESULT := A & C; --SLL
+                                    C := RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    A := RESULT (BITS-1 downto 0);
+                    when "0110" =>  RESULT := A (0) & C & A (BITS-1 downto 1); --SRR
+                                    C := RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    A := RESULT (BITS-1 downto 0);
+                    when "0111" =>  RESULT := A(0) & A(BITS-1) & A (BITS-1 downto 1); --ASR
+                                    C := RESULT (BITS);
+                                    N := RESULT (BITS-1);
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    A := RESULT (BITS-1 downto 0);
+                    when "1000" =>  RESULT := resize(A, BITS+1) or resize(B, BITS+1); --OR
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "1001" =>  RESULT := resize(A, BITS+1) and resize(B, BITS+1); --AND
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "1010" =>  RESULT := resize(A, BITS+1) xor resize(B, BITS+1); --XOR
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "1011" =>  RESULT := resize (not A, BITS+1); --NOT
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    N := RESULT (BITS-1);
+                                    A := RESULT (BITS-1 downto 0);
+                    when "1100" =>  A := unsigned(DIN); --LDA
+                                    RESULT := resize(unsigned(DIN), BITS+1);
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    N := RESULT (BITS-1);
+                    when "1101" =>  B := unsigned(DIN); --LDB
+                                    RESULT := resize(unsigned(DIN), BITS+1);
+                                    if (RESULT (BITS-1 downto 0) = 0)
+                                        then Z := '1';
+                                        else Z := '0';
+                                    end if;
+                                    N := RESULT (BITS-1);
+                    when "1110" =>  C := '0'; --CLC
+                                    RESULT := To_Unsigned(0, BITS+1);
+                    when "1111" =>  C := '1'; --SEC
+                                    RESULT := MAX;
+                    when others =>  report "Illegal OPCODE" severity error;
+                end case;
+            end if;
+        end process;
+          
+end architecture;

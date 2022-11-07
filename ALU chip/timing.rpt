@@ -1,0 +1,656 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Oct 27 12:12:25 2022
+| Host         : LAPTOP-13T6AA9I running 64-bit major release  (build 9200)
+| Command      : report_timing -nworst 10 -file ./timing.rpt
+| Design       : ALU
+| Device       : 7a100t-csg324
+| Speed File   : -3  PRODUCTION 1.23 2018-06-13
+------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 r  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 r  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 f  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 f  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 f  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 r  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         r  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 f  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 r  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 f  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 f  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 f  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 r  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         r  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 r  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 f  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 f  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 f  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 f  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 r  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         r  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 f  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 f  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 f  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 f  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 f  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 r  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         r  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 r  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 r  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 r  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 r  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 r  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 f  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         f  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 f  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 r  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 r  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 r  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 r  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 f  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         f  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 r  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 f  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 r  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 r  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 r  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 f  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         f  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.859ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        4.002ns  (logic 1.523ns (38.056%)  route 2.479ns (61.944%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 f  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 f  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[3])
+                                                      0.551     4.351 r  A_reg[7]_i_6/O[3]
+                         net (fo=1, unplaced)         0.305     4.656    data0[3]
+                         LUT6 (Prop_lut6_I5_O)        0.222     4.878 r  A[3]_i_2/O
+                         net (fo=2, unplaced)         0.296     5.174    A[3]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.097     5.271 r  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.959    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.056 f  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.056    ZERO
+                         FDCE                                         f  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.056    
+  -------------------------------------------------------------------
+                         slack                                  5.859    
+
+Slack (MET) :             5.899ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        3.962ns  (logic 1.470ns (37.102%)  route 2.492ns (62.898%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 r  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 r  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.503     4.303 f  A_reg[7]_i_6/O[2]
+                         net (fo=1, unplaced)         0.302     4.605    data0[2]
+                         LUT6 (Prop_lut6_I5_O)        0.217     4.822 f  A[2]_i_2/O
+                         net (fo=2, unplaced)         0.312     5.134    A[2]_i_2_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.097     5.231 f  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.919    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.016 r  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.016    ZERO
+                         FDCE                                         r  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.016    
+  -------------------------------------------------------------------
+                         slack                                  5.899    
+
+Slack (MET) :             5.899ns  (required time - arrival time)
+  Source:                 A_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            Z_reg/D
+                            (rising edge-triggered cell FDCE clocked by CLOCK  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             CLOCK
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (CLOCK rise@10.000ns - CLOCK rise@0.000ns)
+  Data Path Delay:        3.962ns  (logic 1.470ns (37.102%)  route 2.492ns (62.898%))
+  Logic Levels:           5  (CARRY4=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    1.745ns = ( 11.745 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.054ns
+    Clock Pessimism Removal (CPR):    0.164ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock CLOCK rise edge)      0.000     0.000 r  
+                                                      0.000     0.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000     0.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.820     0.820 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.573     1.394    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.076     1.470 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.584     2.054    CLOCK_IBUF_BUFG
+                         FDCE                                         r  A_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.357     2.411 f  A_reg[0]/Q
+                         net (fo=6, unplaced)         0.727     3.138    ACCUM_OBUF[0]
+                         LUT6 (Prop_lut6_I0_O)        0.199     3.337 r  A[7]_i_15/O
+                         net (fo=1, unplaced)         0.463     3.800    A[7]_i_15_n_0
+                         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.503     4.303 f  A_reg[7]_i_6/O[2]
+                         net (fo=1, unplaced)         0.302     4.605    data0[2]
+                         LUT6 (Prop_lut6_I5_O)        0.217     4.822 f  A[2]_i_2/O
+                         net (fo=2, unplaced)         0.312     5.134    A[2]_i_2_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.097     5.231 f  Z_i_4/O
+                         net (fo=1, unplaced)         0.688     5.919    Z_i_4_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.097     6.016 r  Z_i_2/O
+                         net (fo=1, unplaced)         0.000     6.016    ZERO
+                         FDCE                                         r  Z_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock CLOCK rise edge)     10.000    10.000 r  
+                                                      0.000    10.000 r  CLOCK (IN)
+                         net (fo=0)                   0.000    10.000    CLOCK
+                         IBUF (Prop_ibuf_I_O)         0.689    10.689 r  CLOCK_IBUF_inst/O
+                         net (fo=1, unplaced)         0.544    11.234    CLOCK_IBUF
+                         BUFG (Prop_bufg_I_O)         0.072    11.306 r  CLOCK_IBUF_BUFG_inst/O
+                         net (fo=20, unplaced)        0.439    11.745    CLOCK_IBUF_BUFG
+                         FDCE                                         r  Z_reg/C
+                         clock pessimism              0.164    11.909    
+                         clock uncertainty           -0.035    11.873    
+                         FDCE (Setup_fdce_C_D)        0.041    11.914    Z_reg
+  -------------------------------------------------------------------
+                         required time                         11.914    
+                         arrival time                          -6.016    
+  -------------------------------------------------------------------
+                         slack                                  5.899    
+
+
+
+
