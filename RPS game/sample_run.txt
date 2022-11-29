@@ -1,0 +1,180 @@
+$ java RPSGame.java
+Welcome to the rock/paper/scissors game!
+
+Please enter your nickname: Oliver
+Welcome, Oliver! Let's get started.
+
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>p
+The computer's choice is paper.
+It's a tie!
+Oliver: 0  v.s. Computer: 0
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? Y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>rock
+The computer's choice is rock.
+It's a tie!
+Oliver: 0  v.s. Computer: 0
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>
+scissors
+The computer's choice is rock.
+You lose this round.
+Oliver: 0  v.s. Computer: 1
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>p
+The computer's choice is paper.
+It's a tie!
+Oliver: 0  v.s. Computer: 1
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? yes
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>R
+The computer's choice is paper.
+You lose this round.
+Oliver: 0  v.s. Computer: 2
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? yes
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>rock
+The computer's choice is paper.
+You lose this round.
+Oliver: 0  v.s. Computer: 3
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? yes
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>glue
+The computer's choice is scissors.
+Oops! Let's call that a tie.
+Oliver: 0  v.s. Computer: 3
+Win percentage: 0.00%   Current streak: 0
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>paper
+The computer's choice is rock.
+You win this round!!!
+Oliver: 1  v.s. Computer: 3
+Win percentage: 25.00%  Current streak: 1
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>s
+The computer's choice is scissors.
+It's a tie!
+Oliver: 1  v.s. Computer: 3
+Win percentage: 25.00%  Current streak: 1
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>r
+The computer's choice is rock.
+It's a tie!
+Oliver: 1  v.s. Computer: 3
+Win percentage: 25.00%  Current streak: 1
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>s
+The computer's choice is scissors.
+It's a tie!
+Oliver: 1  v.s. Computer: 3
+Win percentage: 25.00%  Current streak: 1
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>s
+The computer's choice is paper.
+You win this round!!!
+Oliver: 2  v.s. Computer: 3
+Win percentage: 40.00%  Current streak: 2
+
+Oliver, do you want to continue? y
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>s
+The computer's choice is rock.
+You lose this round.
+Oliver: 2  v.s. Computer: 4
+Win percentage: 33.33%  Current streak: 0
+
+Oliver, do you want to continue? maybe
+Input not recognized. Would you like to continue playing? s;dldfkja
+Input not recognized. Would you like to continue playing? yes
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>sCiSSorS
+The computer's choice is scissors.
+It's a tie!
+Oliver: 2  v.s. Computer: 4
+Win percentage: 33.33%  Current streak: 0
+
+Oliver, do you want to continue? yes
+Choose one of the following:
+        r - rock
+        p - paper
+        s - scissors
+>>r
+The computer's choice is paper.
+You lose this round.
+Oliver: 2  v.s. Computer: 5
+Win percentage: 28.57%  Current streak: 0
+
+Oliver, do you want to continue? no
+
+~~~GAME OVER~~~
+Your longest streak was 2 wins in a row.
+There were a total of 8 ties, too.
+The computer wins. Better luck next time!
+Thank you for playing, Oliver. Have a nice day!
