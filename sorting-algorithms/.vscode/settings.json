@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.tb": "vhdl",
+        "iostream": "cpp"
+    }
+}
