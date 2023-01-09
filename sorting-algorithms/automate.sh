@@ -27,7 +27,7 @@ do
     while [ $int2 -le $max2 ]
     do
         echo -n "$(./sort.exe ${datas[$int1]} ${nums[$int2]})" >> data.csv
-        [[$int2 -lt $max2]] && echo -n "," >> data.csv || echo "" >> data.csv
+        [[ $int2 -lt $max2 ]] && echo -n "," >> data.csv || echo "" >> data.csv
         int2=$(($int2+1))
     done
     int1=$(($int1+1))
