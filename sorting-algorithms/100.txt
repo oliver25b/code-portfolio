@@ -6,7 +6,6 @@ express
 negative
 candle
 violation
-skate
 soprano
 terms
 ballet
@@ -37,16 +36,16 @@ thigh
 soap
 install
 inflation
-precede
 experienced
 concrete
 other
-chew
+Chew
 lip
 default
 earthquake
 poor
 clear
+precede
 black
 tree
 merit
@@ -99,3 +98,4 @@ increase
 shadow
 channel
 lay
+offering
