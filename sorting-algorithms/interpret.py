@@ -7,8 +7,9 @@ print(data)
 
 plt.plot(data)
 
-plt.legend()
-plt.yscale('log')
+plt.title('Sorting Algorithm Comparison')
+plt.legend(['Bubble Sort', 'Selection Sort', 'Insertion Sort', 'Shell Sort', 'Quick Sort', 'Merge Sort'])
+plt.yscale('symlog')
 plt.ylabel('Time to Sort (ms)')
 plt.xticks(ticks=range(0,10), labels=data.iloc[:,0])
 plt.xlabel('Number of Sortees')
